@@ -33,8 +33,10 @@ class Counting_Frequency:
         for word,count in words.items():
             #Decreasing value for printing else statement if the key and value is not there
             value = value-1
+            if user_input.lower()=='q':
+                sys.exit()
             #This statement print if the user_input matches the given word
-            if user_input.lower()==word:
+            elif user_input.lower()==word:
                 print(f"{user_input.lower()} has occured {count} times")
                 break
             #This statement format all keys and values
@@ -51,5 +53,8 @@ frequency = {}
 count = 1
 
 #Initializing the object
-func = Counting_Frequency
-func.formatting()
+while True:
+    func = Counting_Frequency
+    func.formatting()
+    print("--------------------")
+    print("Press q to exit")
