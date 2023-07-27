@@ -1,5 +1,6 @@
-#Importing sys module
+#Importing sys and csv module
 import sys
+import csv
 
 class Counting_Frequency:
     '''reading_words fuction is used to read the content line by line and from
@@ -41,12 +42,18 @@ class Counting_Frequency:
                 break
             #This statement format all keys and values
             elif user_input=="*":
-                for word,count in words.items():
-                    print(f"{word} has occured {count} times")
+                with open("result.csv","w") as results:
+                    fieldname = ["Word","Frequency"]
+                    file = csv.DictWriter(results,fieldnames=fieldname)
+                    file.writeheader()
+                    for word,count in words.items():
+                        file.writerow({fieldname[0]:word,fieldname[1]:count})
             #This statement print if the key and value are not there
             else:
                 if value==0:
                     print(f"{user_input} has not occured")
+
+
 
 words = []
 frequency = {}
